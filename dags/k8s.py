@@ -105,7 +105,7 @@ with DAG(
     tags=['test'],
 ) as dag:
     k = KubernetesPodOperator(
-        namespace='default',
+        namespace='airflow',
         image="ubuntu:16.04",
         cmds=["bash", "-cx"],
         arguments=["echo", "10"],
@@ -128,7 +128,7 @@ with DAG(
 
     # [START howto_operator_k8s_write_xcom]
     write_xcom = KubernetesPodOperator(
-        namespace='default',
+        namespace='airflow',
         image='alpine',
         cmds=["sh", "-c", "mkdir -p /airflow/xcom/;echo '[1,2,3,4]' > /airflow/xcom/return.json"],
         name="write-xcom",
